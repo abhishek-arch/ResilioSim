@@ -60,7 +60,7 @@ export default function UserLogin() {
         </button>
 
         <h2 className="text-3xl font-bold text-center mb-6 relative">
-          🚀 {useOtp ? "OTP Login" : "Login"}
+          {useOtp ? "OTP Login" : "Login"}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4 relative">
