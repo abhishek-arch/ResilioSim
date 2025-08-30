@@ -25,13 +25,6 @@ body {
 }
 
 /* Hide default cursor on interactive elements */
-a,
-button,
-input,
-textarea,
-select {
-  cursor: none;
-} 
 
 /* Section styling */
 section {
