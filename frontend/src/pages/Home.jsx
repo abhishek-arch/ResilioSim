@@ -1,5 +1,19 @@
 import React, { useState } from "react";
-import { AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, Database, GitBranch, Globe, GraduationCap, MapPin, Mic, Radar, Shield, Siren, Sparkles, Triangle, Users, Video, Waves } from "lucide-react";
+import {
+  AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, Database, GitBranch, Globe,
+  GraduationCap, MapPin, Mic, Radar, Shield, Siren, Sparkles, Triangle, Users, Video, Waves
+} from "lucide-react";
+
+
+import SiteHeader from "../components/SiteHeader";
+import HeroCard from "../components/HeroCard";
+import Card from "../components/Card";
+import Divider from "../components/Divider";
+import SectionHeader from "../components/SectionHeader";
+import AlertsFeed from "../components/AlertsFeed";
+import EmergencyRequestCard from "../components/EmergencyRequestCard";
+import ChatBot from "../components/ChatBot";
+
 
 export default function SafeSimSite() {
   const [chat, setChat] = useState([
@@ -80,21 +94,7 @@ export default function SafeSimSite() {
         </div>
       </section>
 
-      <Divider id="features" />
-
-      <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
-        <SectionHeader kicker="Capabilities" title="Key Features" subtitle="Preparedness + Simulation + Response in one place." />
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Feature icon={<GraduationCap className="h-5 w-5"/>} title="AR/VR Training Drills" desc="Immersive modules that teach what to do before, during & after disasters." />
-          <Feature icon={<Bot className="h-5 w-5"/>} title="AI Guidance" desc="Multilingual chatbot & voice tips tailored to your location and risk." />
-          <Feature icon={<Radar className="h-5 w-5"/>} title="IoT Early Warnings" desc="Integrates flood/seismic/gas sensors; triggers smart workflows." />
-          <Feature icon={<Compass className="h-5 w-5"/>} title="Safe Route Maps" desc="Find shelters & hospitals with real-time crowding info." />
-          <Feature icon={<Users className="h-5 w-5"/>} title="Volunteer Coordination" desc="Match needs to helpers; track requests & fulfillment." />
-          <Feature icon={<Video className="h-5 w-5"/>} title="Gamified Learning" desc="Points, badges, levels for drills completed—great for schools." />
-        </div>
-      </section>
-
-      <Divider id="demo" />
+      
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <SectionHeader kicker="Hands-on" title="Live Demo Widgets" subtitle="Click around to experience SafeSim." />
@@ -107,63 +107,12 @@ export default function SafeSimSite() {
 
       <Divider />
 
-      <TechSection />
-      <ImpactSection />
+      
       <Divider />
-      <ReferencesSection />
-      <SiteFooter />
+      
     </div>
   );
 }
-
-// Components rewritten in plain React JS
-function SiteHeader() { return <header className="py-6 text-center text-2xl font-bold">SafeSim Site Header</header>; }
-function HeroCard() { return <div className="bg-slate-800 rounded-xl h-64" />; }
-function Card({ title, icon, children, accent }) {
-  return (
-    <div className={`rounded-xl border p-6 bg-gradient-to-br ${accent}`}> 
-      <div className="flex items-center gap-3 mb-4">{icon}<h3 className="font-bold text-lg">{title}</h3></div>
-      {children}
-    </div>
-  );
-}
-function Feature({ icon, title, desc }) {
-  return (
-    <div className="rounded-xl border border-slate-700 p-5 hover:bg-slate-800/50 transition">
-      <div className="flex items-center gap-3 mb-2">{icon}<h4 className="font-semibold">{title}</h4></div>
-      <p className="text-slate-300 text-sm">{desc}</p>
-    </div>
-  );
-}
-function Divider({ id }) { return <hr id={id} className="my-10 border-slate-700" />; }
-function SectionHeader({ kicker, title, subtitle }) {
-  return (
-    <div className="text-center mb-8">
-      <p className="text-sm uppercase text-cyan-400 font-medium">{kicker}</p>
-      <h2 className="text-2xl font-bold mt-2">{title}</h2>
-      <p className="text-slate-300 mt-1">{subtitle}</p>
-    </div>
-  );
-}
-function AlertsFeed() { return <div className="bg-slate-800 rounded-xl h-64">Alerts Feed</div>; }
-function EmergencyRequestCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Request Card</div>; }
-function ChatBot({ chat, msg, setMsg, handleSend }) {
-  return (
-    <div className="bg-slate-800 rounded-xl p-4 flex flex-col h-64">
-      <div className="flex-1 overflow-y-auto mb-2">
-        {chat.map((c, idx) => <div key={idx} className={`${c.role === 'user' ? 'text-right' : 'text-left'} mb-1`}>{c.text}</div>)}
-      </div>
-      <form onSubmit={handleSend} className="flex gap-2">
-        <input value={msg} onChange={(e) => setMsg(e.target.value)} className="flex-1 rounded p-2 bg-slate-900 border border-slate-700" placeholder="Type a message" />
-        <button type="submit" className="bg-cyan-500 px-4 py-2 rounded">Send</button>
-      </form>
-    </div>
-  );
-}
-function TechSection() { return <div className="py-10 text-center">Tech Stack & Scalability Section</div>; }
-function ImpactSection() { return <div className="py-10 text-center">Impact & Risks Section</div>; }
-function ReferencesSection() { return <div className="py-10 text-center">References Section</div>; }
-function SiteFooter() { return <footer className="py-6 text-center text-sm">SafeSim Footer</footer>; }
 
 function inferBotReply(q) {
   q = q.toLowerCase();
