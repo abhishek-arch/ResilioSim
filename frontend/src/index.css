@@ -4,7 +4,7 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: none; /* Hide default cursor */
+  /* cursor: none; Hide default cursor */
 }
 * {
   box-sizing: border-box;
@@ -18,20 +18,13 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  cursor: none; /* Hide default cursor */
+  /* cursor: none; Hide default cursor */
   position: relative;
   background-color: black;
   color: white;
 }
 
 /* Hide default cursor on interactive elements */
-a,
-button,
-input,
-textarea,
-select {
-  cursor: none;
-} 
 
 /* Section styling */
 section {

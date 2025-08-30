@@ -132,7 +132,7 @@ const Navbar = ({isopen , setisopen}) => {
           
 
         
-        to="/Autorob-Club/signupoptions" className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group">Sign In
+        to="/usersignup" className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group">Sign In
         
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300"></span>
         </Link></motion.li>
@@ -152,7 +152,7 @@ const Navbar = ({isopen , setisopen}) => {
         ><Link
          
         
-        to="/Autorob-Club/userlogin" className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group">Login
+        to="/userlogin" className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group">Login
         
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300"></span>
         
