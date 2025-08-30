@@ -45,7 +45,7 @@ export default function SafeSimSite() {
                 <Siren className="h-3.5 w-3.5" /> BitNBuild • Team Apex
               </span>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-                SafeSim: Disaster <span className="text-cyan-300">Preparedness</span>,<br className="hidden sm:block" />
+                RESILIOSIM: Disaster <span className="text-cyan-300">Preparedness</span>,<br className="hidden sm:block" />
                 <span className="text-indigo-300">Simulation</span> & Response
               </h1>
               <p className="mt-4 max-w-xl text-slate-300/90">

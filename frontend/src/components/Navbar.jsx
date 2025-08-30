@@ -51,10 +51,10 @@ const Navbar = ({isopen , setisopen}) => {
 
       </div>
       
-      <nav className="lg:flex hidden space-x-8">
-          {[{src:"#",na:"Home"}, {src:"#",na:"SOS"}, {src:"/usersignup",na:"Signup"}, {src:"/userlogin",na:"Login"}, {src:"#",na:"Contact"}].map(
+      <nav className="lg:flex hidden space-x-8 flex item-center justify-center">
+          {[ {src:"#",na:"SOS"}, {src:"/usersignup",na:"Signup"}, {src:"/userlogin",na:"Login"}, {src:"#",na:"Contact"}].map(
             (item, index) => (
-              <motion.a
+              <motion.div
              
 
 
@@ -73,12 +73,14 @@ const Navbar = ({isopen , setisopen}) => {
 
 
 
-                className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group"
-                href="#"
+                className={`relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400  font-medium transition-colors duration-300 group text-decoration-none flex item-center justify-center ${
+        item.na === "SOS"
+          ? "bg-red-600 w-fit p-2 rounded-md":""}`}
+                
               >
                <Link to={item.src}>{item.na}</Link>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+              </motion.div>
             )
           )}
         </nav>
