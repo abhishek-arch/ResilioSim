@@ -89,7 +89,8 @@ export default function SignUpPage() {
         phone: formData.phoneNumber,
         emgcontact: formData.emergencyContact,
         address: formData.address // Add address field if you have it in your form
-      })
+      }),
+        credentials: 'include'
     });
 
     const data = await response.json();
