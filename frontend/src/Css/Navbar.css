@@ -1,0 +1,25 @@
+.logo{
+    filter: invert(0);
+}
+.hamburger{
+    display: none;
+    
+    border: 2px solid rebeccapurple;
+    ;
+    z-index: 1;
+    /* position: fixed; */
+}
+li{
+     
+    transition: all 0.3s ease;
+}
+@media screen and (max-width: 768px){
+    .hamburger{
+        display: block;
+        cursor: pointer;
+    }
+    .navbar{
+        display: none;
+    }
+    
+}
