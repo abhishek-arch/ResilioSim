@@ -3,8 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
-const passport = require("passport");
-const user = require("..models/user.js");
+// const passport = require("passport");
+const user = require("./models/user.js");
 
 app.use(express.json());
 
@@ -38,7 +38,7 @@ const emergencyData = {
 
 
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = "mongodb://127.0.0.1:27017/disaster-management";
 
 main()
 .then(()=>{
@@ -96,6 +96,10 @@ app.get('/api/resources', (req, res) => {
 app.get('/api/updates', (req, res) => {
   res.json(emergencyData.updates);
 });
+
+app.get("/",(req,res)=>{
+    res.json("hi, i am root")
+})
 
 app.listen(3000, () => {
   console.log('Disaster Management API running on port 3000');
