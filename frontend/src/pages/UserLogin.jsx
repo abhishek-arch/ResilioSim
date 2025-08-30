@@ -35,9 +35,9 @@ export default function UserLogin() {
   return (
     <div
       className={
-        darkMode
-          ? "bg-gray-900 min-h-screen flex items-center justify-center"
-          : "bg-gray-100 min-h-screen flex items-center justify-center"
+       " bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full min-h-screen flex items-center justify-center p-4" +
+       (darkMode ? " dark" : "")
+       
       }
     >
       <motion.div
