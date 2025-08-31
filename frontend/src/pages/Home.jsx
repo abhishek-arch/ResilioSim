@@ -1,24 +1,8 @@
 import React, { useState } from "react";
-import {
-  AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, Database, GitBranch, Globe,
-  GraduationCap, MapPin, Mic, Radar, Shield, Siren, Sparkles, Triangle, Users, Video, Waves
-} from "lucide-react";
-
-
-import SiteHeader from "../components/SiteHeader";
-import HeroCard from "../components/HeroCard";
-import Card from "../components/Card";
-import Divider from "../components/Divider";
-import SectionHeader from "../components/SectionHeader";
-import AlertsFeed from "../components/AlertsFeed";
-import EmergencyRequestCard from "../components/EmergencyRequestCard";
-import ChatBot from "../components/ChatBot";
-
+import { AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, GraduationCap, Radar, Shield, Siren, Sparkles, Triangle, Users, Video } from "lucide-react";
 
 export default function SafeSimSite() {
-  const [chat, setChat] = useState([
-    { role: "bot", text: "Hello! I can guide you during floods, fires, and earthquakes. Ask me anything." },
-  ]);
+  const [chat, setChat] = useState([{ role: "bot", text: "Hello! I can guide you during floods, fires, and earthquakes. Ask me anything." }]);
   const [msg, setMsg] = useState("");
 
   const handleSend = (e) => {
@@ -35,9 +19,11 @@ export default function SafeSimSite() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
       <SiteHeader />
 
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="absolute -bottom-24 -right-24 h-[28rem] w-[28rem] rounded-full bg-indigo-500/10 blur-3xl" />
+
         <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 md:pt-28 md:pb-20">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
@@ -45,7 +31,7 @@ export default function SafeSimSite() {
                 <Siren className="h-3.5 w-3.5" /> BitNBuild • Team Apex
               </span>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-                RESILIOSIM: Disaster <span className="text-cyan-300">Preparedness</span>,<br className="hidden sm:block" />
+                SafeSim: Disaster <span className="text-cyan-300">Preparedness</span>,<br className="hidden sm:block" />
                 <span className="text-indigo-300">Simulation</span> & Response
               </h1>
               <p className="mt-4 max-w-xl text-slate-300/90">
@@ -67,6 +53,7 @@ export default function SafeSimSite() {
                 <span className="inline-flex items-center gap-2"><Bot className="h-4 w-4 text-fuchsia-300"/> AI Guidance</span>
               </div>
             </div>
+
             <HeroCard />
           </div>
         </div>
@@ -74,6 +61,7 @@ export default function SafeSimSite() {
 
       <Divider />
 
+      {/* Problem & Solution */}
       <section id="problem" className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="grid gap-8 md:grid-cols-2">
           <Card title="The Problem" icon={<AlertTriangle className="h-5 w-5" />} accent="from-rose-500/20 to-rose-500/5">
@@ -94,12 +82,29 @@ export default function SafeSimSite() {
         </div>
       </section>
 
-      
+      <Divider id="features" />
 
+      {/* Features */}
+      <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+        <SectionHeader kicker="Capabilities" title="Key Features" subtitle="Preparedness + Simulation + Response in one place." />
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Feature icon={<GraduationCap className="h-5 w-5"/>} title="AR/VR Training Drills" desc="Immersive modules that teach what to do before, during & after disasters." />
+          <Feature icon={<Bot className="h-5 w-5"/>} title="AI Guidance" desc="Multilingual chatbot & voice tips tailored to your location and risk." />
+          <Feature icon={<Radar className="h-5 w-5"/>} title="IoT Early Warnings" desc="Integrates flood/seismic/gas sensors; triggers smart workflows." />
+          <Feature icon={<Compass className="h-5 w-5"/>} title="Safe Route Maps" desc="Find shelters & hospitals with real-time crowding info." />
+          <Feature icon={<Users className="h-5 w-5"/>} title="Volunteer Coordination" desc="Match needs to helpers; track requests & fulfillment." />
+          <Feature icon={<Video className="h-5 w-5"/>} title="Gamified Learning" desc="Points, badges, levels for drills completed—great for schools." />
+        </div>
+      </section>
+
+      <Divider id="demo" />
+
+      {/* Demo Widgets */}
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <SectionHeader kicker="Hands-on" title="Live Demo Widgets" subtitle="Click around to experience SafeSim." />
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
           <AlertsFeed />
+          <EmergencyActionsCard />
           <EmergencyRequestCard />
           <ChatBot chat={chat} msg={msg} setMsg={setMsg} handleSend={handleSend} />
         </div>
@@ -107,19 +112,71 @@ export default function SafeSimSite() {
 
       <Divider />
 
-      
+      <TechSection />
+      <ImpactSection />
       <Divider />
-      
+      <ReferencesSection />
+      <SiteFooter />
     </div>
   );
 }
 
+/* ===================== COMPONENTS ===================== */
+function SiteHeader() { return <header className="py-6 text-center text-2xl font-bold">SafeSim Site Header</header>; }
+function HeroCard() { return <div className="bg-slate-800 rounded-xl h-64" />; }
+function Card({ title, icon, children, accent }) {
+  return (
+    <div className={`rounded-xl border p-6 bg-gradient-to-br ${accent}`}> 
+      <div className="flex items-center gap-3 mb-4">{icon}<h3 className="font-bold text-lg">{title}</h3></div>
+      {children}
+    </div>
+  );
+}
+function Feature({ icon, title, desc }) {
+  return (
+    <div className="rounded-xl border border-slate-700 p-5 hover:bg-slate-800/50 transition">
+      <div className="flex items-center gap-3 mb-2">{icon}<h4 className="font-semibold">{title}</h4></div>
+      <p className="text-slate-300 text-sm">{desc}</p>
+    </div>
+  );
+}
+function Divider({ id }) { return <hr id={id} className="my-10 border-slate-700" />; }
+function SectionHeader({ kicker, title, subtitle }) {
+  return (
+    <div className="text-center mb-8">
+      <p className="text-sm uppercase text-cyan-400 font-medium">{kicker}</p>
+      <h2 className="text-2xl font-bold mt-2">{title}</h2>
+      <p className="text-slate-300 mt-1">{subtitle}</p>
+    </div>
+  );
+}
+function AlertsFeed() { return <div className="bg-slate-800 rounded-xl h-64">Alerts Feed</div>; }
+function EmergencyActionsCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Actions Card</div>; }
+function EmergencyRequestCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Request Card</div>; }
+function ChatBot({ chat, msg, setMsg, handleSend }) {
+  return (
+    <div className="bg-slate-800 rounded-xl p-4 flex flex-col h-64">
+      <div className="flex-1 overflow-y-auto mb-2">
+        {chat.map((c, idx) => <div key={idx} className={`${c.role === 'user' ? 'text-right' : 'text-left'} mb-1`}>{c.text}</div>)}
+      </div>
+      <form onSubmit={handleSend} className="flex gap-2">
+        <input value={msg} onChange={(e) => setMsg(e.target.value)} className="flex-1 rounded p-2 bg-slate-900 border border-slate-700" placeholder="Type a message" />
+        <button type="submit" className="bg-cyan-500 px-4 py-2 rounded">Send</button>
+      </form>
+    </div>
+  );
+}
+function TechSection() { return <div className="py-10 text-center">Tech Stack & Scalability Section</div>; }
+function ImpactSection() { return <div className="py-10 text-center">Impact & Risks Section</div>; }
+function ReferencesSection() { return <div className="py-10 text-center">References Section</div>; }
+function SiteFooter() { return <footer className="py-6 text-center text-sm">SafeSim Footer</footer>; }
+
+/* ===================== BOT LOGIC ===================== */
 function inferBotReply(q) {
   q = q.toLowerCase();
-  if (q.includes("pack") || q.includes("kit")) return "Flood kit: water, ready-to-eat food, torch + batteries, power bank, first-aid, necessary meds, copies of IDs, cash, whistle, raincoat, dry clothes.";
-  if (q.includes("earthquake") || q.includes("quake")) return "During earthquake: Duck under sturdy table, Cover head/neck, Hold until shaking stops. Stay away from windows.";
-  if (q.includes("fire")) return "Fire safety: Crawl low under smoke, use stairs not lifts, stop-drop-roll if clothes catch fire.";
-  if (q.includes("flood") || q.includes("water")) return "Move to higher ground, avoid walking/driving through flood water, switch off power at main if safe.";
-  if (q.includes("cyclone") || q.includes("storm")) return "Secure windows/doors, keep radio/phone charged, stay indoors away from glass; evacuate if advised.";
-  return "Stay safe! Ask about flood kits, earthquake drills, fire safety, or evacuation routes.";
+  if(q.includes("flood") || q.includes("rain")) return "During floods, move to higher ground, avoid water, and keep essentials ready.";
+  if(q.includes("earthquake")) return "Drop, cover, hold on! Stay indoors or in open areas away from buildings.";
+  if(q.includes("fire")) return "Evacuate immediately, use fire exits, avoid elevators, and stay low to avoid smoke.";
+  if(q.includes("kit") || q.includes("pack")) return "Emergency kit: water, food, flashlight, batteries, first aid, important documents, meds.";
+  return "Stay calm. Ensure safety, follow alerts, and consult local authorities or the AI guidance module.";
 }
