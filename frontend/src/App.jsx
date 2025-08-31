@@ -3,7 +3,7 @@ import{Routes, Route} from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import UserLogin from './pages/UserLogin'
-import UserSignup from './pages/UserSignUp'
+import UserSignup from './pages/UserSignup'
 import Userdashboard from './pages/Userdashboard'
 import UserProtectWrapper from './pages/UserProtectWrapper'
 
