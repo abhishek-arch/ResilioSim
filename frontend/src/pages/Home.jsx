@@ -128,11 +128,8 @@ export default function SafeSimSite() {
       <Divider />
 
       {/* Extra Sections */}
-      <TechSection />
-      <ImpactSection />
-      <Divider />
-      <ReferencesSection />
-      <SiteFooter />
+     
+      
     </div>
   );
 }
