@@ -26,7 +26,7 @@ ResilioSim is a web-based platform designed to educate and train individuals on 
 
 6)User-friendly, responsive UI built with React.js and Tailwind CSS.
 
-🛠️ Tech Stack
+~Tech Stack
 
 Frontend: React.js, Tailwind CSS, HTML5, JavaScript, React Router, Axios
 
