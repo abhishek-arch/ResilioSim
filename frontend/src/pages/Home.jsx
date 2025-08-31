@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, Database, GitBranch, Globe, GraduationCap, MapPin, Mic, Radar, Shield, Siren, Sparkles, Triangle, Users, Video, Waves } from "lucide-react";
+import { AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, GraduationCap, Radar, Shield, Siren, Sparkles, Triangle, Users, Video } from "lucide-react";
 
 export default function SafeSimSite() {
-  const [activeTab, setActiveTab] = useState("citizen");
   const [chat, setChat] = useState([{ role: "bot", text: "Hello! I can guide you during floods, fires, and earthquakes. Ask me anything." }]);
   const [msg, setMsg] = useState("");
 
@@ -85,6 +84,7 @@ export default function SafeSimSite() {
 
       <Divider id="features" />
 
+      {/* Features */}
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <SectionHeader kicker="Capabilities" title="Key Features" subtitle="Preparedness + Simulation + Response in one place." />
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -106,7 +106,7 @@ export default function SafeSimSite() {
           <AlertsFeed />
           <EmergencyActionsCard />
           <EmergencyRequestCard />
-          <ChatBotPanel chat={chat} msg={msg} setMsg={setMsg} handleSend={handleSend} />
+          <ChatBot chat={chat} msg={msg} setMsg={setMsg} handleSend={handleSend} />
         </div>
       </section>
 
@@ -121,7 +121,7 @@ export default function SafeSimSite() {
   );
 }
 
-// Components rewritten in plain React JS
+/* ===================== COMPONENTS ===================== */
 function SiteHeader() { return <header className="py-6 text-center text-2xl font-bold">SafeSim Site Header</header>; }
 function HeroCard() { return <div className="bg-slate-800 rounded-xl h-64" />; }
 function Card({ title, icon, children, accent }) {
@@ -151,6 +151,7 @@ function SectionHeader({ kicker, title, subtitle }) {
   );
 }
 function AlertsFeed() { return <div className="bg-slate-800 rounded-xl h-64">Alerts Feed</div>; }
+function EmergencyActionsCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Actions Card</div>; }
 function EmergencyRequestCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Request Card</div>; }
 function ChatBot({ chat, msg, setMsg, handleSend }) {
   return (
