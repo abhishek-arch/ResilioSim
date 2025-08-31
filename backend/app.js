@@ -17,7 +17,8 @@ connectDB()
 
 
 const allowedOrigins = [
- 
+ "https://resiliosim-frontend.onrender.com",
+ "https://resiliosim.onrender.com",
   'http://localhost:5173',
   
 ];
