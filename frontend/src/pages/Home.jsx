@@ -1,8 +1,23 @@
 import React, { useState } from "react";
-import { AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, GraduationCap, Radar, Shield, Siren, Sparkles, Triangle, Users, Video } from "lucide-react";
+import {
+  AlertTriangle, ArrowRight, Bot, CheckCircle2, Compass, GraduationCap,
+  Radar, Shield, Siren, Sparkles, Triangle, Users, Video
+} from "lucide-react";
+
+// External components (from your first version)
+import SiteHeader from "../components/SiteHeader";
+import HeroCard from "../components/HeroCard";
+import Card from "../components/Card";
+import Divider from "../components/Divider";
+import SectionHeader from "../components/SectionHeader";
+import AlertsFeed from "../components/AlertsFeed";
+import EmergencyRequestCard from "../components/EmergencyRequestCard";
+import ChatBot from "../components/ChatBot";
 
 export default function SafeSimSite() {
-  const [chat, setChat] = useState([{ role: "bot", text: "Hello! I can guide you during floods, fires, and earthquakes. Ask me anything." }]);
+  const [chat, setChat] = useState([
+    { role: "bot", text: "Hello! I can guide you during floods, fires, and earthquakes. Ask me anything." },
+  ]);
   const [msg, setMsg] = useState("");
 
   const handleSend = (e) => {
@@ -19,7 +34,7 @@ export default function SafeSimSite() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
       <SiteHeader />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="absolute -bottom-24 -right-24 h-[28rem] w-[28rem] rounded-full bg-indigo-500/10 blur-3xl" />
@@ -84,7 +99,7 @@ export default function SafeSimSite() {
 
       <Divider id="features" />
 
-      {/* Features */}
+      {/* Features Section */}
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <SectionHeader kicker="Capabilities" title="Key Features" subtitle="Preparedness + Simulation + Response in one place." />
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -102,7 +117,7 @@ export default function SafeSimSite() {
       {/* Demo Widgets */}
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <SectionHeader kicker="Hands-on" title="Live Demo Widgets" subtitle="Click around to experience SafeSim." />
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
           <AlertsFeed />
           <EmergencyActionsCard />
           <EmergencyRequestCard />
@@ -112,6 +127,7 @@ export default function SafeSimSite() {
 
       <Divider />
 
+      {/* Extra Sections */}
       <TechSection />
       <ImpactSection />
       <Divider />
@@ -121,17 +137,7 @@ export default function SafeSimSite() {
   );
 }
 
-/* ===================== COMPONENTS ===================== */
-function SiteHeader() { return <header className="py-6 text-center text-2xl font-bold">SafeSim Site Header</header>; }
-function HeroCard() { return <div className="bg-slate-800 rounded-xl h-64" />; }
-function Card({ title, icon, children, accent }) {
-  return (
-    <div className={`rounded-xl border p-6 bg-gradient-to-br ${accent}`}> 
-      <div className="flex items-center gap-3 mb-4">{icon}<h3 className="font-bold text-lg">{title}</h3></div>
-      {children}
-    </div>
-  );
-}
+/* ===================== EXTRA COMPONENTS ===================== */
 function Feature({ icon, title, desc }) {
   return (
     <div className="rounded-xl border border-slate-700 p-5 hover:bg-slate-800/50 transition">
@@ -140,32 +146,7 @@ function Feature({ icon, title, desc }) {
     </div>
   );
 }
-function Divider({ id }) { return <hr id={id} className="my-10 border-slate-700" />; }
-function SectionHeader({ kicker, title, subtitle }) {
-  return (
-    <div className="text-center mb-8">
-      <p className="text-sm uppercase text-cyan-400 font-medium">{kicker}</p>
-      <h2 className="text-2xl font-bold mt-2">{title}</h2>
-      <p className="text-slate-300 mt-1">{subtitle}</p>
-    </div>
-  );
-}
-function AlertsFeed() { return <div className="bg-slate-800 rounded-xl h-64">Alerts Feed</div>; }
-function EmergencyActionsCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Actions Card</div>; }
-function EmergencyRequestCard() { return <div className="bg-slate-800 rounded-xl h-64">Emergency Request Card</div>; }
-function ChatBot({ chat, msg, setMsg, handleSend }) {
-  return (
-    <div className="bg-slate-800 rounded-xl p-4 flex flex-col h-64">
-      <div className="flex-1 overflow-y-auto mb-2">
-        {chat.map((c, idx) => <div key={idx} className={`${c.role === 'user' ? 'text-right' : 'text-left'} mb-1`}>{c.text}</div>)}
-      </div>
-      <form onSubmit={handleSend} className="flex gap-2">
-        <input value={msg} onChange={(e) => setMsg(e.target.value)} className="flex-1 rounded p-2 bg-slate-900 border border-slate-700" placeholder="Type a message" />
-        <button type="submit" className="bg-cyan-500 px-4 py-2 rounded">Send</button>
-      </form>
-    </div>
-  );
-}
+function EmergencyActionsCard() { return <div className="bg-slate-800 rounded-xl h-64 p-4">Emergency Actions Card</div>; }
 function TechSection() { return <div className="py-10 text-center">Tech Stack & Scalability Section</div>; }
 function ImpactSection() { return <div className="py-10 text-center">Impact & Risks Section</div>; }
 function ReferencesSection() { return <div className="py-10 text-center">References Section</div>; }
@@ -174,9 +155,10 @@ function SiteFooter() { return <footer className="py-6 text-center text-sm">Safe
 /* ===================== BOT LOGIC ===================== */
 function inferBotReply(q) {
   q = q.toLowerCase();
-  if(q.includes("flood") || q.includes("rain")) return "During floods, move to higher ground, avoid water, and keep essentials ready.";
-  if(q.includes("earthquake")) return "Drop, cover, hold on! Stay indoors or in open areas away from buildings.";
-  if(q.includes("fire")) return "Evacuate immediately, use fire exits, avoid elevators, and stay low to avoid smoke.";
-  if(q.includes("kit") || q.includes("pack")) return "Emergency kit: water, food, flashlight, batteries, first aid, important documents, meds.";
+  if (q.includes("pack") || q.includes("kit")) return "Emergency kit: water, food, flashlight, batteries, first aid, important documents, meds.";
+  if (q.includes("earthquake") || q.includes("quake")) return "During earthquake: Drop, Cover, Hold On! Stay indoors or move to open ground away from buildings.";
+  if (q.includes("fire")) return "Fire safety: Crawl low under smoke, use stairs not lifts, stop-drop-roll if clothes catch fire.";
+  if (q.includes("flood") || q.includes("water") || q.includes("rain")) return "Move to higher ground, avoid walking/driving through flood water, keep essentials ready.";
+  if (q.includes("cyclone") || q.includes("storm")) return "Secure windows/doors, keep radio/phone charged, stay indoors away from glass; evacuate if advised.";
   return "Stay calm. Ensure safety, follow alerts, and consult local authorities or the AI guidance module.";
 }
