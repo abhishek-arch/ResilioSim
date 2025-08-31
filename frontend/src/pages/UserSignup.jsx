@@ -300,9 +300,9 @@ export default function SignUpPage() {
           <div className="text-center mt-8">
             <p className="text-white/70">
               Already have an account?{' '}
-              <span className="text-indigo-300 hover:text-indigo-200 font-semibold transition-colors cursor-pointer">
+              <Link to={"/userlogin"} className="text-indigo-300 hover:text-indigo-200 font-semibold transition-colors cursor-pointer">
                 Sign in
-              </span>
+              </Link>
             </p>
           </div>
         </div>
