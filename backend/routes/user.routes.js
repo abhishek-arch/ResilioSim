@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ message: "Email or password incorrect" });
   }
   const token = user.generateAuthToken();
-  console.log(token);
+ 
   res.cookie("token", token);
   res.status(200).json({ message: "Login successful", user, token });
 });
