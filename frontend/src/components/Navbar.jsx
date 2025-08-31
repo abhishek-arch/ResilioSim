@@ -29,9 +29,7 @@ const Navbar = ({isopen , setisopen}) => {
           theme: "dark",
         });
       }
-    else {
-        navigate("/Autorob-Club/library")
-      }
+    
     }
       
       
